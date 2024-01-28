@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>methodology</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+    />
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+
+  <body class="body">
+    <div class="container">
+      <h2 class="title">CSS-методологии</h2>
+      <p>
+        Вопрос о том, как организовать стили на небольших сайтах обычно не
+        вызывает головной боли. Но проект растёт и стилей становится значительно
+        больше.
+      </p>
+      <ul>
+        <li>Затрудняется навигация по одному CSS-файлу.</li>
+        <li>
+          Начинаются проблемы со специфичностью при добавлении новых, более
+          сложных селекторов.
+        </li>
+        <li>
+          Появляется необходимость структурировать стили и стандартизировать
+          именование классов.
+        </li>
+        <li>Эффективность командной работы стремится к нулю.</li>
+      </ul>
+      <p>
+        Организация CSS-кода это ключ к эффективности. Использование методологий
+        и лучших практик повышает скорость разработки и уменьшает сложность
+        последующей поддержки и рефакторинга (изменения) кода.
+      </p>
+      <p>
+        Существует множество методологий, например SMACSS, SUITCSS, Atomic CSS,
+        BEM и другие. Все они направленны на организацию структуры стилей,
+        однородность селекторов, именование классов, сокращение дублирования
+        стилей и упрощение взаимодействия между разработчиками. Некоторые
+        методологии, например BEM, проще в понимании и адаптации в проекте,
+        особенно для новичков.
+      </p>
+      <p class="information">
+        У всех методологий есть плюсы и минусы, ни одна из них не является
+        абсолютной догмой. Многие разработчики, даже имея за плечами не один
+        успешно выполненный проект, не оставляют поиски наилучшего способа
+        организации стилей.
+      </p>
+      <h2 class="title">Методология BEM</h2>
+      <p>
+        Методология БЭМ (Блок, Элемент, Модификатор) создана в Яндексе для
+        разработки сайтов, которые надо делать быстро, а поддерживать долгие
+        годы. Она позволяет создавать расширяемые и повторно используемые блоки
+        интерфейса - компоненты.
+      </p>
+      <img src="./images/bem.png" width="600" class="img" />
+      <p>
+        Это не только метод именования классов, но в первую очередь парадигма
+        восприятия проекта как набора сущностей (блоки, элементы, модификаторы),
+        которые можно смешивать и сопоставлять для создания интерфейсов, как
+        конструктор LEGO. Она менее запутана, чем другие, и предоставляет
+        хорошую архитектуру с узнаваемой терминологией.
+      </p>
+      <p><b>Преимущества</b>:</p>
+      <ul>
+        <li>
+          <b>Простота селекторов</b> - все селекторы это классы, поэтому вы не
+          столкнетесь с каскадом. BEM избегает конфликтов имён, используя
+          уникальные контекстные имена классов для каждого блока, элемента и
+          модификатора.
+        </li>
+        <li>
+          <b>Повторное использование</b> - создавая независимые компоненты вы
+          можете повторно использовать их в текущем и других проектах.
+        </li>
+        <li>
+          <b>Структура стилей</b> - методология даёт вашему CSS-коду структуру,
+          которая остается простой и понятной.
+        </li>
+        <li>
+          <b>Самодокументируемость</b> - строгие правила именования классов
+          приводят к понятной HTML-разметке и упорядоченным стилям. При изучении
+          элемента или блока вы получаете всю необходимую информация прямо из
+          HTML-разметки.
+        </li>
+      </ul>
+      <h2 class="title">БЛОК</h2>
+      <p>
+        Функционально независимый компонент, который может быть использован
+        повторно. Блок можно поставить в другую часть страницы или проекта, и он
+        будет иметь смысл. Например, блоком может быть галерея, статья, шапка,
+        форма, виджет сайдбара, сам сайдбар, навигация и т. д.
+      </p>
+      <p><b>Имя класса блока:</b></p>
+      <ul>
+        <li><b>Может</b> состоять только из латинских букв, цифр и тире.</li>
+        <li>
+          <b>Должно</b> отвечать на вопрос «Что это?» - <b>widget</b>,
+          <b>gallery</b>, <b>navigation</b>, <b>post</b>.
+        </li>
+        <li>
+          <b>Не должно</b> отвечать на вопрос «Как выглядит?» - <b>red-text</b>,
+          <b>round-button</b> и т. п
+        </li>
+      </ul>
+      <p class="bg">
+        &lt;!-- В HTML и CSS, блок - это просто базовый класс компонента --&gt;
+        <br />
+        &lt;a class=&quot;logo&quot;&gt;&lt;/a&gt; &lt;p <br />
+        class=&quot;alert&quot;&gt;&lt;/p&gt; &lt;ul <br />
+        class=&quot;gallery&quot;&gt;&lt;/ul&gt; &lt;article <br />
+        class=&quot;product&quot;&gt;&lt;/article&gt; &lt;section <br />
+        class=&quot;section&quot;&gt;&lt;/section&gt; &lt;header <br />
+        class=&quot;page-header&quot;&gt;&lt;/header&gt; <br />
+      </p>
+      <h2 class="title">Вложенность</h2>
+      <p>
+        Блоки можно и нужно вкладывать друг в друга, ограничений нет, помимо
+        здравого смысла и спецификации HTML, так как они представлены тегами.
+        Никаких дополнительных особенностей, приоритета или иерархии вложенные
+        блоки не имеют.
+      </p>
+      <p class="bg">
+        &lt;!-- Блок page-header --&gt; <br />
+        &lt;header class=&quot;page-header&quot;&gt; <br />
+          &lt;!-- Вложенный блок logo --&gt; <br />
+          &lt;a href=&quot;&quot; class=&quot;logo&quot;&gt;&lt;/a&gt; <br />
+        <br />
+        &lt;!-- Вложенный блок navigation --&gt; <br />
+         &lt;ul class=&quot;navigation&quot;&gt; <br />
+           ... <br />
+         &lt;/ul&gt;<br />
+        &lt;/header&gt;<br />
+      </p>
+      <h2 class="title">Элемент</h2>
+      <p>
+        Составная часть блока, которая не имеет смысла и не может использоваться
+        отдельно от него. Например, элемент меню, заголовок или текст в статье,
+        изображение галереи и т. д.
+      </p>
+      <p><b>Имя класса элемента:</b></p>
+      <ul>
+        <li>
+          <b>Обязательно </b>формируется по схеме <b>блок__элемент</b>. Имя
+          блока задаёт пространство имён, которое гарантирует
+        </li>
+        <li>
+          <b>Должно </b>отвечать на вопрос «Что это?», например
+          <b>блок__item</b>, <b>блок__title</b>, <b>блок__link</b>,
+          <b>блок__image</b> и т. п.
+        </li>
+        <li>
+          <b>Не должно</b> отвечать на вопрос «Как выглядит?», например
+          <b>блок__big-link</b>, <b>блок__blue-text</b>,
+          <b>блок__round-button</b> и т. п.
+        </li>
+      </ul>
+      <p class="bg">
+        &lt;!-- ✅ Блок logo с элементами image и label --&gt; <br />
+        &lt;a href=&quot;&quot; class=&quot;logo&quot;&gt; <br />
+        &lt;img class=&quot;logo__image&quot; src=&quot;...&quot;
+        alt=&quot;Логотип компании Технокряк&quot; /&gt; <br />
+        &lt;span class=&quot;logo__label&quot;&gt;Компания
+        Технокряк&lt;/span&gt; <br />
+        &lt;/a&gt; <br /><br />
+
+        &lt;!-- ❌ Элемент вне блока не имеет смысла --&gt; <br />
+        &lt;img class=&quot;logo__image&quot; src=&quot;...&quot;
+        alt=&quot;Логотип компании Технокряк&quot; /&gt; <br />
+        <br />
+
+        &lt;!-- ✅ Блок product с элементами name, price и link --&gt; <br />
+        &lt;article class=&quot;product&quot;&gt; <br />
+        &lt;h1 class=&quot;product__name&quot;&gt;Холодильник&lt;/h1&gt; <br />
+        &lt;p class=&quot;product__price&quot;&gt;Цена: 30000&lt;/p&gt; <br />
+        &lt;a class=&quot;product__link&quot; href=&quot;&quot;&gt;Посмотреть
+        все характеристики&lt;/a&gt; <br />
+        &lt;/article&gt;<br /><br />
+
+        &lt;!-- ❌ Элемент вне блока не имеет смысла --&gt;<br />
+        &lt;h1 class=&quot;product__name&quot;&gt;Холодильник&lt;/h1&gt;<br />
+      </p>
+      <p class="information">
+        Задайте себе вопрос: «Эта сущность может потребоваться мне отдельно,
+        сама по себе? Или она нужна только внутри её родителя?». Если нужна
+        отдельно - это блок, если мыслима только как часть - это элемент.
+      </p>
+      <h2 class="title">Вложенность</h2>
+      <p>
+        Элементы можно вкладывать друг в друга, при этом допустима любая
+        вложенность, так как BEM-классы не привязаны к HTML-иерархии.
+        HTML-структура элементов блока может быть произвольной.
+      </p>
+      <p>
+        <b
+          >Навигация это блок, а элемент списка и ссылка это элементы блока
+          навигации.</b
+        >
+      </p>
+      <p class="bg">
+        &lt;ul class=&quot;nav&quot;&gt; <br />
+        &lt;li class=&quot;nav__item&quot;&gt; <br />
+        &lt;a class=&quot;nav__link&quot; href=&quot;&quot;&gt;О нас&lt;/a&gt;
+        <br />
+        &lt;/li&gt; <br />
+        &lt;li class=&quot;nav__item&quot;&gt; <br />
+        &lt;a class=&quot;nav__link&quot;
+        href=&quot;&quot;&gt;Контакты&lt;/a&gt; <br />
+        &lt;/li&gt; <br />
+        &lt;li class=&quot;nav__item&quot;&gt; <br />
+        &lt;a class=&quot;nav__link&quot; href=&quot;&quot;&gt;Галерея&lt;/a&gt;
+        <br />
+        &lt;/li&gt; <br />
+        &lt;/ul&gt;
+      </p>
+      <p><b>Структура BEM-классов такого компонента будет плоской.</b></p>
+      <p class="bg">
+        .nav <br />
+        .nav__item <br />
+        .nav__link <br />
+      </p>
+      <p>
+        <b
+          >Добавим BEM-классы к разметке карточки продукта с несколькими
+          уровнями вложенности.</b
+        >
+      </p>
+      <p class="bg">
+        &lt;article class=&quot;product&quot;&gt; <br />
+        &lt;div class=&quot;product__overlay&quot;&gt; <br />
+        &lt;img class=&quot;product__image&quot; src=&quot;&quot; /&gt; <br />
+        &lt;/div&gt; <br /><br />
+
+        &lt;div class=&quot;product__content&quot;&gt; <br />
+        &lt;h2 class=&quot;product__name&quot;&gt;Холодильник&lt;/h2&gt; <br />
+        &lt;p class=&quot;product__description&quot;&gt;Шикарный
+        холодильник&lt;/p&gt;<br />
+        &lt;a class=&quot;product__link&quot; href=&quot;&quot;&gt;Посмотреть
+        все характеристики&lt;/a&gt;<br /><br />
+
+        &lt;div class=&quot;product__meta&quot;&gt; <br />
+        &lt;p class=&quot;product__price&quot;&gt;Цена: 30000&lt;/p&gt;<br />
+        &lt;p class=&quot;product__quantity&quot;&gt;Осталось: 8
+        штук&lt;/p&gt;<br />
+        &lt;/div&gt;<br />
+        &lt;/div&gt;<br />
+        &lt;/article&gt;<br />
+      </p>
+      <p>
+        Структура BEM-классов блока и его элементов <b>всегда будет плоской</b>,
+        вне зависимости от глубины вложенности элементов друг в друга. Это
+        позволяет изменять структуру HTML-разметки блока без внесения правок в
+        стили.
+      </p>
+      <p class="bg">
+        .product <br />
+        .product__overlay <br />
+        .product__image <br />
+        .product__content <br />
+        .product__name <br />
+        .product__description <br />
+        .product__link <br />
+        .product__meta <br />
+        .product__price <br />
+        .product__quantity <br />
+      </p>
+      <p class="warning">
+        Элемент - всегда часть блока, а не другого элемента. Это значит, что в
+        имени класса элемента нельзя прописывать иерархию вида
+        блок__элемент1__элемент2.
+      </p>
+      <h2 class="titl">Необязательность</h2>
+      <p>
+        Элемент это необязательная часть блока. Не у всех блоков должны быть
+        элементы и не все элементы могут присутствовать в разных экземплярах
+        блока.
+      </p>
+      <p class="bg">
+        &lt;!-- Блок button c иконкой и текстом --&gt; <br />
+        &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt; <br />
+        &lt;svg class=&quot;button__icon&quot;&gt;...&lt;/svg&gt; <br />
+        &lt;span class=&quot;button__label&quot;&gt;В корзину&lt;/span&gt;
+        <br />
+        &lt;/button&gt; <br /><br />
+
+        &lt;!-- Блок button только с текстом --&gt;<br />
+        &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;<br />
+        &lt;span class=&quot;button__label&quot;&gt;В корзину&lt;/span&gt;<br />
+        &lt;/button&gt;<br /><br />
+
+        &lt;!-- Блок button только с иконкой --&gt;<br />
+        &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;<br />
+        &lt;svg class=&quot;button__icon&quot;&gt;...&lt;/svg&gt;<br />
+        &lt;/button&gt;
+      </p>
+      <h2 class="title">Модификатор</h2>
+      <p>
+        Дополнительный класс-модификатор определяющий изменение внешнего вида,
+        состояния или поведения блока либо элемента.
+      </p>
+      <p><b>Имя класса модификатора:</b></p>
+      <ul>
+        <li><b>Должно </b>быть простым, описывающим вносимое изменение.</li>
+        <li>
+          <b>Обязательно </b>формируется по схеме блок--модификатор или
+          блок__элемент--модификатор.
+        </li>
+      </ul>
+      <p>
+        Класс-модификатор никогда не должен использоваться самостоятельно, а
+        только в паре с тем классом блока или элемента, который он дополняет. В
+        примере, имена модификаторов указывают тип оповещения.
+      </p>
+      <p class="bg">
+        &lt;!-- ✅ Есть базовый класс --&gt;<br />
+        &lt;p class=&quot;alert&quot;&gt;&lt;/p&gt; <br /><br />
+
+        &lt;!-- ✅ Есть базовый класс и класс-модификатор --&gt;<br />
+        &lt;p class=&quot;alert alert--success&quot;&gt;&lt;/p&gt;<br />
+        &lt;p class=&quot;alert alert--error&quot;&gt;&lt;/p&gt;<br />
+        &lt;p class=&quot;alert alert--warning&quot;&gt;&lt;/p&gt;<br /><br />
+
+        &lt;!-- ❌ Нет базового класса, не имеет смысла --&gt;<br />
+        &lt;p class=&quot;alert--success&quot;&gt;&lt;/p&gt;
+      </p>
+      <p>
+        Базовые стили блока или элемента записываются в их классе.
+        Класс-мидификатор может добавлять новые или переопределять уже
+        существующие свойства.
+      </p>
+      <div class="alert">You have new unread messages.</div>
+      <div class="alert alert--success">
+        Transaction completed successfully.
+      </div>
+      <div class="alert alert--error">Transaction error.</div>
+      <div class="alert alert--warning">
+        The site is undergoing maintenance.
+      </div>
+      <h2 class="title">Кнопка-конструктор</h2>
+      <p>
+        Создадим компонент кнопки с иконкой и текстом. Кнопка это блок, иконка и
+        текст - его необязательные элементы.
+      </p>
+      <p class="bg">
+        &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt; <br />
+        &lt;svg class=&quot;button__icon&quot;&gt;...&lt;/svg&gt; <br />
+        &lt;span class=&quot;button__label&quot;&gt;В корзину&lt;/span&gt;
+        <br />
+        &lt;/button&gt;
+      </p>
+      <p>
+        <b
+          >Для того чтобы задать отступ между иконкой и текстом, необходимо
+          указать margin, например иконке.</b
+        >
+      </p>
+      <p class="bg">
+        .button__icon { <br />
+        margin-right: 10px;<br />
+        }
+      </p>
+      <p>
+        Проблема такого решения в том, что элементы это необязательная часть
+        блока и их HTML-структура может быть произвольной. Иконка может быть
+        справа от текста, тогда у неё будет лишний правый отступ, а нужен левый.
+        Текста может не быть вовсе, тогда и отступы не нужны.
+      </p>
+      <p class="bg">
+        &lt;!-- Иконка после текста --&gt; <br />
+        &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt; <br />
+        &lt;span class=&quot;button__label&quot;&gt;В корзину&lt;/span&gt;
+        <br />
+        &lt;svg class=&quot;button__icon&quot;&gt;...&lt;/svg&gt; <br />
+        &lt;/button&gt;<br />
+        <br />
+        &lt;!-- Текста нет --&gt;<br />
+        &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;<br />
+        &lt;svg class=&quot;button__icon&quot;&gt;...&lt;/svg&gt;<br />
+        &lt;/button&gt;
+      </p>
+      <p>
+        Решить эту задачу помогут модификаторы. Добавим иконке два модификатора
+        положения - start и end (их так же можно было назвать например left и
+        right). В этих классах-модификаторах запишем стили для отступов.
+      </p>
+      <p>
+        Теперь мы можем комбинировать элементы кнопки как конструктор LEGO и
+        ничего не будет лишним и не сломается. Всё потому что базовые классы
+        блока и элементов содержат общие стили для всех их вариаций, а
+        модификаторы изменяют стили по необходимости.
+      </p>
+      <button type="button" class="btn">
+        <svg class="button__icon button__icon--start" width="20" height="20">
+          <use href="./images/icons.svg#cart"></use>
+        </svg>
+        <span class="button__label"> Add to cart</span>
+      </button>
+
+      <button type="button" class="btn">
+        <span class="button__label">Add to cart </span>
+        <svg class="button__icon button__icon--end" width="20" height="20">
+          <use href="./images/icons.svg#cart"></use>
+        </svg>
+      </button>
+
+      <button type="button" class="btn">
+        <span class="button__label">Add to cart</span>
+      </button>
+
+      <button type="button" class="btn" aria-label="Add to cart">
+        <svg class="button__icon" width="20" height="20">
+           
+          <use href="./images/icons.svg#cart"></use>
+        </svg>
+      </button>
+      <h2 class="title">Микс</h2>
+      <p>
+        <b>Миксы (миксование, смесь)</b> - комбинирование нескольких классов
+        блока и элемента на одном теге. То есть это возможность сделать один
+        блок элементом другого блока. Такой подход позволяет добавить некоторые
+        стили, например внешнюю геометрию или позиционирование, необходимые
+        только в определённом месте.
+      </p>
+      <p class="bg">
+        &lt;header class=&quot;page-header&quot;&gt; <br />
+        &lt;a class=&quot;logo&quot; href=&quot;&quot;&gt;Технокряк&lt;/a&gt;
+        <br />
+        &lt;ul class=&quot;nav&quot;&gt; <br /><br />
+        ... <br />
+        &lt;/ul&gt; <br />
+        &lt;/header&gt; <br /><br />
+
+        &lt;footer class=&quot;page-footer&quot;&gt; <br />
+        &lt;a class=&quot;logo&quot; href=&quot;&quot;&gt;Технокряк&lt;/a&gt;
+        <br />
+        &lt;/footer&gt;
+      </p>
+      <br />
+      <p>
+        Например, для блока <b>logo</b>, только внутри блока <b>page-header</b>,
+        необходим внешний правый отступ в 50px, чтобы отодвинуть навигацию.
+        Можно создать класс-модификатор <b>logo--header</b> или
+        <b>logo--margin-right</b>, но выглядит это крайне сомнительно, особенно
+        имена классов. Класс-модификатор используется для изменения внешнего
+        вида или поведения блока, а не для задания его внешней геометрии.
+      </p>
+      <p>
+        В таких ситуациях используются миксы. Имя класса состоит из имён блока
+        родителя и блока потомка по схеме родитель__потомок. Сделаем блок
+        <b>logo</b> элементом блока <b>page-header</b>, добавив еще один
+        класс-микс <b>page-header__logo</b>.
+      </p>
+      <br />
+      <p class="bg">
+        &lt;header class=&quot;page-header&quot;&gt; <br />
+        &lt;!-- Это и есть микс. В этом месте блок logo стал ещё и элементом
+        page-header --&gt; <br />
+        &lt;a class=&quot;logo page-header__logo&quot;
+        href=&quot;&quot;&gt;Технокряк&lt;/a&gt; <br />
+        &lt;ul class=&quot;nav&quot;&gt; <br />
+        ... <br />
+        &lt;/ul&gt; <br />
+        &lt;/header&gt; <br /><br />
+
+        &lt;footer class=&quot;page-footer&quot;&gt; <br />
+        &lt;a class=&quot;logo&quot; href=&quot;&quot;&gt;Технокряк&lt;/a&gt;<br />
+        &lt;/footer&gt;
+      </p>
+      <br />
+      <p>
+        На классе logo будут все базовые стили, а на этом классе точечно задаём
+        внешнюю геометрию логотипа в шапке.
+      </p>
+      <p class="bg">
+        .page-header__logo { <br />
+        margin-right: 50px; <br />
+        }
+      </p>
+
+      <header class="page-header">
+        <a class="logo page-header__logo" href="">header</a>
+        <ul class="nav">
+          <li class="nav__item"><a class="nav__link" href="">About</a></li>
+          <li class="nav__item"><a class="nav__link" href="">Contact</a></li>
+          <li class="nav__item"><a class="nav__link" href="">Gallery</a></li>
+        </ul>
+      </header>
+
+      <main>main</main>
+
+      <footer class="page-footer">
+        <a class="logo" href="">footer</a>
+      </footer>
+      <h2 class="title">Селекторы</h2>
+      <p>
+        Методология BEM запрещает использование селекторов тегов,
+        идентификаторов или комбинированных селекторов вида div.class1.class2.
+        Стили блоков, элементов и модификаторов описываются как простые
+        селекторы класса. Простые селекторы ограждают от проблем со
+        специфичностью.
+      </p>
+      <p class="bg">
+        .card {} <br />
+        .card__title {} <br />
+        .card__excerpt {} <br />
+        .card__link {} <br />
+      </p>
+      <p>
+        Тем не менее, иногда этого не достаточно, поэтому методология допускает
+        использование вложенных селекторов. Вложенность уместна, если необходимо
+        изменить стили элемента в зависимости от модификатора или состояния
+        блока или другого элемента этого блока.
+      </p>
+      <p>
+        В примере, вложенные селекторы .card:hover .card__link и .card:hover
+        .card__link::before необходимы для изменения стилей ссылки и запуска
+        анимации иконки при ховере по карточке.
+      </p>
+      <div class="card">
+        <h1 class="card__title">Card title</h1>
+        <p class="card__excerpt">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dicta,
+          harum nam, ad possimus sed recusandae necessitatibus vel repellat
+          voluptatem qui, error excepturi! Tenetur quos ipsa quod quia,
+          veritatis vero.
+        </p>
+        <a href="" class="card__link">Read more</a>
+      </div>
+      <h2 class="title">Секция товаров</h2>
+      <p>
+        <b
+          >Разберём пример создания секции со стандартной сеткой карточек,
+          например товаров интернет-магазина.</b
+        >
+      </p>
+      <p><b>Выделим основные блоки (компоненты):</b></p>
+      <ul>
+        <li>
+          <b>Секция </b>(класс section) - представляет произвольный раздел с
+          необязательным заголовком.
+        </li>
+        <li>
+          <b>Контейнер </b> (класс container) - обёртка задающая ширину контента
+          и центрирование.
+        </li>
+        <li>
+          <b>Сетка </b>(класс grid) - отвечает за геометрию и расположение
+          элементов.
+        </li>
+        <li>
+          <b>Карточка товара</b> (класс product) - компонент содержащий
+          информацию о продукте.
+        </li>
+      </ul>
+      <h3 class="title">Блок section</h3>
+      <p>
+        <b
+          >К секции можно добавить модификаторы на цвет фона в зависимости от
+          темы, и многое другое.
+        </b>
+      </p>
+      <p class="bg">
+        &lt;section class=&quot;section&quot;&gt; <br />
+        &lt;!-- Необязательный заголовок, тег заголовка может быть произвольный
+        h1-h6 --&gt;<br />
+        &lt;h2 class=&quot;section__heading&quot;&gt;&lt;/h2&gt; <br />
+        &lt;/section&gt;
+      </p>
+      <h3 class="title">Блок container</h3>
+      <p>
+        <b>Используется не только в секциях, поэтому это отдельный блок.</b>
+      </p>
+      <p class="bg">
+        &lt;section class=&quot;section&quot;&gt; <br />
+        &lt;!-- Блок container, обёрка контента секции --&gt; <br />
+        &lt;div class=&quot;container&quot;&gt; <br />
+        &lt;h2 class=&quot;section__heading&quot;&gt;&lt;/h2&gt; <br />
+        &lt;/div&gt; <br />
+        &lt;/section&gt;
+      </p>
+      <h3 class="title">Блок container</h3>
+      <p>
+        У сетки есть только один элемент, grid__item, он будет отвечать за
+        финальный размер карточки товара и за расстояние между карточками. То
+        есть сетка и её элементы это flex-контейнер который берёт на себя задачу
+        позиционирования чего-либо, например карточек товара.
+      </p>
+      <p class="bg">
+        &lt;section class=&quot;section&quot;&gt; <br />
+        &lt;div class=&quot;container&quot;&gt; <br />
+        &lt;h2 class=&quot;section__heading&quot;&gt;&lt;/h2&gt; <br /><br />
+
+        &lt;!-- Блок grid --&gt;<br />
+        &lt;ul class=&quot;grid&quot;&gt;<br />
+        &lt;li class=&quot;grid__item&quot;&gt;...&lt;/li&gt;<br />
+        &lt;li class=&quot;grid__item&quot;&gt;...&lt;/li&gt;<br />
+        &lt;li class=&quot;grid__item&quot;&gt;...&lt;/li&gt;<br />
+        ... <br />
+        &lt;/ul&gt; <br />
+        &lt;/div&gt; <br />
+        &lt;/section&gt;<br />
+      </p>
+      <p class="information">
+        Такую сетку можно будет использовать повторно, особенно если элементам
+        сделать модификаторы на количество занимаемых колонок.
+      </p>
+      <h3 class="title">Блок product</h3>
+      <p>
+        Независимый компонент, который может представлять любой продукт. Пусть
+        карточка товара состоит из изображения, названия, цены и кнопки «В
+        корзину». Элементов может быть сколько угодно, главное помнить что они
+        не обязательные.
+      </p>
+      <p class="bg">
+        &lt;article class=&quot;product&quot;&gt; <br />
+        &lt;img class=&quot;product__image&quot; /&gt; <br />
+        &lt;h2 class=&quot;product__name&quot;&gt;&lt;/h2&gt; <br />
+        &lt;p class=&quot;product__price&quot;&gt;&lt;/p&gt; <br />
+        &lt;button class=&quot;button&quot;
+        type=&quot;button&quot;&gt;&lt;/button&gt; <br />
+        &lt;/article&gt;
+      </p>
+      <p>
+        Обратите внимание на тег button, его класс это блок, а не элемент блока
+        product. Чаще всего дизайн кнопок в проекте одинаковый, поэтому кнопка
+        делается отдельным блоком и повторно используется в других компонентах.
+        Для того чтобы задать ей дополнительное позиционирование или внешнюю
+        геометрию, достаточно добавить микс product__button.
+      </p>
+      <h3 class="title">Всё вместе</h3>
+      <p>
+        <b
+          >Собираем секцию товаров из готовых компонентов, и добавляем
+          оформление.</b
+        >
+      </p>
+      <section class="section">
+        <h2 class="section__heading">Popular products</h2>
+
+        <ul class="grid">
+          <li class="grid__item">
+            <article class="product">
+              <img
+                class="product__image"
+                src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-2_large.png?format=webp&v=1530129318"
+                alt="Кроссовки"
+              />
+              <h1 class="product__name">Boots</h1>
+              <p class="product__price">Price: 200 credits</p>
+              <button
+                type="button"
+                class="button product__button"
+                aria-label="Add to cart"
+              >
+                <svg class="button__icon" width="20" height="20">
+                  <use href="./images/icons.svg#cart"></use>
+                </svg>
+              </button>
+            </article>
+          </li>
+          <li class="grid__item">
+            <article class="product">
+              <img
+                class="product__image"
+                src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-5_large.png?format=webp&v=1530129458"
+                alt="Часы"
+              />
+              <h1 class="product__name">Watch</h1>
+              <p class="product__price">Price: 400 credits</p>
+              <button
+                type="button"
+                class="button product__button"
+                aria-label="Add to cart"
+              >
+                <svg class="button__icon" width="20" height="20">
+                  <use href="./images/icons.svg#cart"></use>
+                </svg>
+              </button>
+            </article>
+          </li>
+          <li class="grid__item">
+            <article class="product">
+              <img
+                class="product__image"
+                src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-3_large.png?format=webp&v=1530129341"
+                alt="Очки"
+              />
+              <h1 class="product__name">Glasses</h1>
+              <p class="product__price">Price: 150 credits</p>
+              <button
+                type="button"
+                class="button product__button"
+                aria-label="Add to cart"
+              >
+                <svg class="button__icon" width="20" height="20">
+                  <use href="./images/icons.svg#cart"></use>
+                </svg>
+              </button>
+            </article>
+          </li>
+          <li class="grid__item">
+            <article class="product">
+              <img
+                class="product__image"
+                src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-1_large.png?format=webp&v=1530129292"
+                alt="Рюкзак"
+              />
+              <h1 class="product__name">Backpack</h1>
+              <p class="product__price">Price: 320 credits</p>
+              <button
+                type="button"
+                class="button product__button"
+                aria-label="Add to cart"
+              >
+                <svg class="button__icon" width="20" height="20">
+                  <use href="./images/icons.svg#cart"></use>
+                </svg>
+              </button>
+            </article>
+          </li>
+          <li class="grid__item">
+            <article class="product">
+              <img
+                class="product__image"
+                src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-4_large.png?format=webp&v=1530129360"
+                alt="Кепка"
+              />
+              <h1 class="product__name">Cap</h1>
+              <p class="product__price">Price: 120 credits</p>
+              <button
+                type="button"
+                class="button product__button"
+                aria-label="Add to cart"
+              >
+                <svg class="button__icon" width="20" height="20">
+                  <use href="./images/icons.svg#cart"></use>
+                </svg>
+              </button>
+            </article>
+          </li>
+          <li class="grid__item">
+            <article class="product">
+              <img
+                class="product__image"
+                src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-6_large.png?format=webp&v=1530129477"
+                alt="Лампа"
+              />
+              <h1 class="product__name">Lamp</h1>
+              <p class="product__price">Price: 240 credits</p>
+              <button
+                type="button"
+                class="button product__button"
+                aria-label="Add to cart"
+              >
+                <svg class="button__icon" width="20" height="20">
+                  <use href="./images/icons.svg#cart"></use>
+                </svg>
+              </button>
+            </article>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
